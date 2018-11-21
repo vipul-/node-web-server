@@ -2,6 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 8080;
+
 hbs.registerPartials(`${__dirname}/views/partials`);
 
 hbs.registerHelper('getCurrentYear', () => {
@@ -28,9 +30,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render("maintenance");
-});
+// app.use((req, res, next) => {
+//     res.render("maintenance");
+// });
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -60,6 +62,6 @@ app.get('/bad', (req, res) => {
     );
 });
 
-app.listen(8080, () => {
-    console.log("Server listening on port 8080.");
+app.listen(port, () => {
+    console.log(`Server listening on port ${port}.`);
 });
