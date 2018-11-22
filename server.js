@@ -62,6 +62,13 @@ app.get('/bad', (req, res) => {
     );
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects', {
+        pageTitle: "Projects Page",
+        projectDesc: "This is the projects page."
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`);
 });
